@@ -1,0 +1,40 @@
+magic
+tech minimum
+timestamp 1498526601
+use MUX2X1  MUX2X1_1
+timestamp 1498526601
+transform -1 0 11 0 -1 21
+box 0 0 10 20
+use INVX1  INVX1_2
+timestamp 1498526601
+transform 1 0 10 0 -1 21
+box 0 0 3 20
+use NOR2X1  NOR2X1_1
+timestamp 1498526601
+transform -1 0 19 0 -1 21
+box 0 0 5 20
+use OAI22X1  OAI22X1_1
+timestamp 1498526601
+transform 1 0 18 0 -1 21
+box 0 0 8 20
+use NAND2X1  NAND2X1_1
+timestamp 1498526601
+transform -1 0 31 0 -1 21
+box 0 0 5 20
+use INVX1  INVX1_1
+timestamp 1498526601
+transform -1 0 34 0 -1 21
+box 0 0 3 20
+use BUFX2  BUFX2_1
+timestamp 1498526601
+transform 1 0 34 0 -1 21
+box 0 0 5 20
+<< labels >>
+rlabel space -2 12 -2 12 4 i1
+rlabel space -2 16 -2 16 4 i2
+rlabel space 18 24 18 24 6 i3
+rlabel space 30 24 30 24 6 i4
+rlabel space 35 24 35 24 6 sel<0>
+rlabel space 11 24 11 24 6 sel<1>
+rlabel space 42 12 42 12 6 out
+<< end >>
