@@ -556,9 +556,9 @@ Finding unused cells or wires in module \mux..
 10. Executing BLIF backend.
 
 End of script. Logfile hash: 10fac9d2fa
-CPU: user 0.13s system 0.00s, MEM: 34.82 MB total, 8.46 MB resident
+CPU: user 0.14s system 0.00s, MEM: 34.82 MB total, 8.45 MB resident
 Yosys 0.5+ (git sha1 f13e387, gcc 5.3.1-8ubuntu2 -O2 -fstack-protector-strong -fPIC -Os)
-Time spent: 32% 1x share (0 sec), 8% 14x opt_const (0 sec), ...
+Time spent: 34% 1x share (0 sec), 11% 9x opt (0 sec), ...
 Cleaning up output syntax
 Cleaning Up blif file syntax
 Running blifFanout (iterative)
@@ -590,7 +590,7 @@ Files:
 
 Running blif2Verilog.
 Running blif2BSpice.
-Synthesis script ended on Seg Jul 3 14:13:25 BRT 2017
+Synthesis script ended on Seg Jul 3 15:14:22 BRT 2017
 Running blif2cel.tcl
 1st pass of blif file /home/lsd/Work/Qflow-scripts/synthesis/mux.blif. . .
 Reading macros from LEF file. . .
@@ -894,7 +894,7 @@ Number of components = 7
 New number of components = 7
 Number of rows = 1
 Done with addspacers.tcl
-Placement script ended on Seg Jul 3 14:13:31 BRT 2017
+Placement script ended on Seg Jul 3 15:14:28 BRT 2017
 -----------------------------------------
 Vesta static timing analysis tool
 (c) 2013 Tim Edwards, Open Circuit Design
@@ -1096,7 +1096,7 @@ No failed routes!
 ----------------------------------------------
 Final: No failed routes!
 ----------------------------------------------
-Router script ended on Seg Jul 3 14:13:32 BRT 2017
+Router script ended on Seg Jul 3 15:14:29 BRT 2017
 Running blif2cel.tcl
 1st pass of blif file /home/lsd/Work/Qflow-scripts/synthesis/mux.blif. . .
 Reading macros from LEF file. . .

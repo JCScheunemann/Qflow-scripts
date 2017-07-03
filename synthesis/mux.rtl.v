@@ -7,7 +7,7 @@ input i3;
 input i4;
 input clk;
 output out;
-input [1:0] sel;
+inout [1:0] sel;
 input [1:0] lol;
 
 	INVX1 INVX1_1 ( .gnd(gnd), .vdd(vdd), .A(sel[1]), .Y(_abc_58_n8_1) );
