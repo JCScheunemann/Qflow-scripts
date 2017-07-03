@@ -15,11 +15,96 @@ TRACKS X -480.0 DO 21 STEP 320.0 LAYER metal4 ;
 COMPONENTS 7 ;
 - BUFX2_1 BUFX2 + PLACED ( 80.0 100 ) S ;
 - DFFPOSX1_1 DFFPOSX1 + PLACED ( 560.0 100 ) S ;
-- INVX1_1 INVX1 + PLACED ( 2480.0 100 ) FS ;
-- NOR2X1_1 NOR2X1 + PLACED ( 2800.0 100 ) S ;
-- OAI21X1_1 OAI21X1 + PLACED ( 3280.0 100 ) FS ;
-- OAI22X1_1 OAI22X1 + PLACED ( 3920.0 100 ) FS ;
+- NOR2X1_1 NOR2X1 + PLACED ( 2480.0 100 ) FS ;
+- INVX1_1 INVX1 + PLACED ( 2960.0 100 ) S ;
+- OAI22X1_1 OAI22X1 + PLACED ( 3280.0 100 ) FS ;
+- OAI21X1_1 OAI21X1 + PLACED ( 4080.0 100 ) S ;
 - MUX2X1_1 MUX2X1 + PLACED ( 4720.0 100 ) FS ;
 END COMPONENTS
 
-PINS 12 ;
+PINS 10 ;
+- i1 + NET i1
+  + LAYER metal2 ( 0 0 ) ( 1 1 )
+  + PLACED ( 2560.0 2400.0 ) N ;
+- i2 + NET i2
+  + LAYER metal2 ( 0 0 ) ( 1 1 )
+  + PLACED ( 4480.0 2400.0 ) N ;
+- i3 + NET i3
+  + LAYER metal3 ( 0 0 ) ( 1 1 )
+  + PLACED ( 5920.0 1200.0 ) N ;
+- i4 + NET i4
+  + LAYER metal3 ( 0 0 ) ( 1 1 )
+  + PLACED ( 5920.0 1600.0 ) N ;
+- sel<0> + NET sel<0>
+  + LAYER metal2 ( 0 0 ) ( 1 1 )
+  + PLACED ( 4320.0 -200.0 ) N ;
+- sel<1> + NET sel<1>
+  + LAYER metal2 ( 0 0 ) ( 1 1 )
+  + PLACED ( 3200.0 2400.0 ) N ;
+- clk + NET clk
+  + LAYER metal2 ( 0 0 ) ( 1 1 )
+  + PLACED ( 2080.0 2400.0 ) N ;
+- lol<0> + NET lol<0>
+  + LAYER metal2 ( 0 0 ) ( 1 1 )
+  + PLACED ( 5760.0 -200.0 ) N ;
+- lol<1> + NET lol<1>
+  + LAYER metal3 ( 0 0 ) ( 1 1 )
+  + PLACED ( -160.0 1600.0 ) N ;
+- out + NET out
+  + LAYER metal3 ( 0 0 ) ( 1 1 )
+  + PLACED ( -160.0 1200.0 ) N ;
+END PINS
+
+NETS 16 ;
+- sel<1>
+  ( PIN sel<1> ) 
+  ( OAI21X1_1 A ) 
+  ( MUX2X1_1 S ) 
+  ( INVX1_1 A ) ;
+- $abc$58$n8_1
+  ( NOR2X1_1 B ) 
+  ( INVX1_1 Y ) ;
+- i1
+  ( PIN i1 ) 
+  ( NOR2X1_1 A ) ;
+- $abc$58$n9
+  ( OAI22X1_1 B ) 
+  ( NOR2X1_1 Y ) ;
+- i3
+  ( PIN i3 ) 
+  ( MUX2X1_1 A ) ;
+- i4
+  ( PIN i4 ) 
+  ( MUX2X1_1 B ) ;
+- $abc$58$n10
+  ( OAI22X1_1 D ) 
+  ( MUX2X1_1 Y ) ;
+- i2
+  ( PIN i2 ) 
+  ( OAI21X1_1 B ) ;
+- sel<0>
+  ( PIN sel<0> ) 
+  ( OAI22X1_1 C ) 
+  ( OAI21X1_1 C ) ;
+- $abc$58$n11
+  ( OAI22X1_1 A ) 
+  ( OAI21X1_1 Y ) ;
+- out_FF_INPUT
+  ( DFFPOSX1_1 D ) 
+  ( OAI22X1_1 Y ) ;
+- $auto$iopadmap.cc:164:execute$64
+  ( DFFPOSX1_1 Q ) 
+  ( BUFX2_1 A ) ;
+- out
+  ( PIN out ) 
+  ( BUFX2_1 Y ) ;
+- clk
+  ( PIN clk ) 
+  ( DFFPOSX1_1 CLK ) ;
+- lol<0>
+  ( PIN lol<0> ) ;
+- lol<1>
+  ( PIN lol<1> ) ;
+END NETS
+
+END DESIGN

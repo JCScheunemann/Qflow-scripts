@@ -4,7 +4,7 @@ Running yosys for verilog parsing and synthesis
  |                                                                            |
  |  yosys -- Yosys Open SYnthesis Suite                                       |
  |                                                                            |
- |  Copyright (C) 2012 - 2016  Clifford Wolf <clifford@clifford.at>           |
+ |  Copyright (C) 2012 - 2015  Clifford Wolf <clifford@clifford.at>           |
  |                                                                            |
  |  Permission to use, copy, modify, and/or distribute this software for any  |
  |  purpose with or without fee is hereby granted, provided that the above    |
@@ -20,7 +20,7 @@ Running yosys for verilog parsing and synthesis
  |                                                                            |
  \----------------------------------------------------------------------------/
 
- Yosys 0.7 (git sha1 61f6811, gcc 6.2.0-11ubuntu1 -O2 -fdebug-prefix-map=/build/yosys-OIL3SR/yosys-0.7=. -fstack-protector-strong -fPIC -Os)
+ Yosys 0.5+ (git sha1 f13e387, gcc 5.3.1-8ubuntu2 -O2 -fstack-protector-strong -fPIC -Os)
 
 
 -- Executing script file `mux.ys' --
@@ -58,7 +58,7 @@ Removed a total of 0 dead cases.
 
 3.2.5. Executing PROC_MUX pass (convert decision trees to multiplexers).
 Creating decoders for process `\mux.$proc$mux.v:16$1'.
-     1/1: $0\out[0:0]
+  creating decoder for signal `$0\out[0:0]'.
 
 3.2.6. Executing PROC_DLATCH pass (convert process syncs to latches).
 
@@ -70,193 +70,196 @@ Creating register for signal `\mux.\out' using process `\mux.$proc$mux.v:16$1'.
 Removing empty process `mux.$proc$mux.v:16$1'.
 Cleaned up 0 empty switches.
 
-3.3. Executing OPT_EXPR pass (perform const folding).
-
-3.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.3. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.5. Executing CHECK pass (checking for obvious problems).
+3.4. Executing CHECK pass (checking for obvious problems).
 checking module mux..
 found and reported 0 problems.
 
-3.6. Executing OPT pass (performing simple optimizations).
+3.5. Executing OPT pass (performing simple optimizations).
 
-3.6.1. Executing OPT_EXPR pass (perform const folding).
+3.5.1. Executing OPT_CONST pass (perform const folding).
 
-3.6.2. Executing OPT_MERGE pass (detect identical cells).
+3.5.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.6.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \mux..
+3.5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizier on module \mux..
   Creating internal representation of mux trees.
   Evaluating internal representation of mux trees.
     Root of a mux tree: $ternary$mux.v:17$4 (pure)
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
 
-3.6.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+3.5.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \mux.
 Performed a total of 0 changes.
 
-3.6.5. Executing OPT_MERGE pass (detect identical cells).
+3.5.5. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.6.6. Executing OPT_RMDFF pass (remove dff with constant values).
+3.5.6. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
-3.6.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.6.8. Executing OPT_EXPR pass (perform const folding).
+3.5.8. Executing OPT_CONST pass (perform const folding).
 
-3.6.9. Finished OPT passes. (There is nothing left to do.)
+3.5.9. Finished OPT passes. (There is nothing left to do.)
 
-3.7. Executing WREDUCE pass (reducing word size of cells).
+3.6. Executing WREDUCE pass (reducing word size of cells).
 
-3.8. Executing ALUMACC pass (create $alu and $macc cells).
+3.7. Executing ALUMACC pass (create $alu and $macc cells).
 Extracting $alu and $macc cells in module mux:
   created 0 $alu and 0 $macc cells.
 
-3.9. Executing SHARE pass (SAT-based resource sharing).
+3.8. Executing SHARE pass (SAT-based resource sharing).
 
-3.10. Executing OPT pass (performing simple optimizations).
+3.9. Executing OPT pass (performing simple optimizations).
 
-3.10.1. Executing OPT_EXPR pass (perform const folding).
+3.9.1. Executing OPT_CONST pass (perform const folding).
 
-3.10.2. Executing OPT_MERGE pass (detect identical cells).
+3.9.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.10.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \mux..
+3.9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizier on module \mux..
   Creating internal representation of mux trees.
   Evaluating internal representation of mux trees.
     Root of a mux tree: $ternary$mux.v:17$4 (pure)
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
 
-3.10.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+3.9.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \mux.
 Performed a total of 0 changes.
 
-3.10.5. Executing OPT_MERGE pass (detect identical cells).
+3.9.5. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.10.6. Executing OPT_RMDFF pass (remove dff with constant values).
+3.9.6. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
-3.10.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.10.8. Executing OPT_EXPR pass (perform const folding).
+3.9.8. Executing OPT_CONST pass (perform const folding).
 
-3.10.9. Finished OPT passes. (There is nothing left to do.)
+3.9.9. Finished OPT passes. (There is nothing left to do.)
 
-3.11. Executing FSM pass (extract and optimize FSM).
+3.10. Executing FSM pass (extract and optimize FSM).
 
-3.11.1. Executing FSM_DETECT pass (finding FSMs in design).
+3.10.1. Executing FSM_DETECT pass (finding FSMs in design).
 
-3.11.2. Executing FSM_EXTRACT pass (extracting FSM from design).
+3.10.2. Executing FSM_EXTRACT pass (extracting FSM from design).
 
-3.11.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+3.10.3. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+3.10.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \mux..
+
+3.10.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+
+3.10.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+
+3.10.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+
+3.10.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+
+3.11. Executing OPT pass (performing simple optimizations).
+
+3.11.1. Executing OPT_CONST pass (perform const folding).
+
+3.11.2. Executing OPT_SHARE pass (detect identical cells).
+Finding identical cells in module `\mux'.
+Removed a total of 0 cells.
+
+3.11.3. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
 3.11.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.11.5. Executing FSM_OPT pass (simple optimizations of FSMs).
+3.11.5. Finished fast OPT passes.
 
-3.11.6. Executing FSM_RECODE pass (re-assigning FSM state encoding).
+3.12. Executing MEMORY pass.
 
-3.11.7. Executing FSM_INFO pass (dumping all available information on FSM cells).
+3.12.1. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
 
-3.11.8. Executing FSM_MAP pass (mapping FSMs to basic logic).
+3.12.2. Executing OPT_CLEAN pass (remove unused cells and wires).
+Finding unused cells or wires in module \mux..
 
-3.12. Executing OPT pass (performing simple optimizations).
-
-3.12.1. Executing OPT_EXPR pass (perform const folding).
-
-3.12.2. Executing OPT_MERGE pass (detect identical cells).
-Finding identical cells in module `\mux'.
-Removed a total of 0 cells.
-
-3.12.3. Executing OPT_RMDFF pass (remove dff with constant values).
+3.12.3. Executing MEMORY_SHARE pass (consolidating $memrc/$memwr cells).
 
 3.12.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.12.5. Finished fast OPT passes.
+3.12.5. Executing MEMORY_COLLECT pass (generating $mem cells).
 
-3.13. Executing MEMORY pass.
-
-3.13.1. Executing MEMORY_DFF pass (merging $dff cells to $memrd and $memwr).
-
-3.13.2. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.13. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.13.3. Executing MEMORY_SHARE pass (consolidating $memrd/$memwr cells).
+3.14. Executing OPT pass (performing simple optimizations).
 
-3.13.4. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \mux..
+3.14.1. Executing OPT_CONST pass (perform const folding).
 
-3.13.5. Executing MEMORY_COLLECT pass (generating $mem cells).
-
-3.14. Executing OPT_CLEAN pass (remove unused cells and wires).
-Finding unused cells or wires in module \mux..
-
-3.15. Executing OPT pass (performing simple optimizations).
-
-3.15.1. Executing OPT_EXPR pass (perform const folding).
-
-3.15.2. Executing OPT_MERGE pass (detect identical cells).
+3.14.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.15.3. Executing OPT_RMDFF pass (remove dff with constant values).
+3.14.3. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
-3.15.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.14.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.15.5. Finished fast OPT passes.
+3.14.5. Finished fast OPT passes.
 
-3.16. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
+3.15. Executing MEMORY_MAP pass (converting $mem cells to logic and flip-flops).
 
-3.17. Executing OPT pass (performing simple optimizations).
+3.16. Executing OPT pass (performing simple optimizations).
 
-3.17.1. Executing OPT_EXPR pass (perform const folding).
+3.16.1. Executing OPT_CONST pass (perform const folding).
 
-3.17.2. Executing OPT_MERGE pass (detect identical cells).
+3.16.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.17.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \mux..
+3.16.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
+Running muxtree optimizier on module \mux..
   Creating internal representation of mux trees.
   Evaluating internal representation of mux trees.
     Root of a mux tree: $ternary$mux.v:17$4 (pure)
   Analyzing evaluation results.
 Removed 0 multiplexer ports.
 
-3.17.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
+3.16.4. Executing OPT_REDUCE pass (consolidate $*mux and $reduce_* inputs).
   Optimizing cells in module \mux.
 Performed a total of 0 changes.
 
-3.17.5. Executing OPT_MERGE pass (detect identical cells).
+3.16.5. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.17.6. Executing OPT_RMDFF pass (remove dff with constant values).
+3.16.6. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
-3.17.7. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.16.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.17.8. Executing OPT_EXPR pass (perform const folding).
+3.16.8. Executing OPT_CONST pass (perform const folding).
 
-3.17.9. Finished OPT passes. (There is nothing left to do.)
+3.16.9. Finished OPT passes. (There is nothing left to do.)
 
-3.18. Executing TECHMAP pass (map to technology primitives).
+3.17. Executing TECHMAP pass (map to technology primitives).
 
-3.18.1. Executing Verilog-2005 frontend.
+3.17.1. Executing Verilog-2005 frontend.
 Parsing Verilog input from `<techmap.v>' to AST representation.
 Generating RTLIL representation for module `\_90_simplemap_bool_ops'.
 Generating RTLIL representation for module `\_90_simplemap_reduce_ops'.
@@ -285,70 +288,72 @@ Mapping mux.$ternary$mux.v:17$4 ($mux) with simplemap.
 Mapping mux.$procdff$5 ($dff) with simplemap.
 No more expansions possible.
 
-3.19. Executing OPT pass (performing simple optimizations).
+3.18. Executing OPT pass (performing simple optimizations).
 
-3.19.1. Executing OPT_EXPR pass (perform const folding).
+3.18.1. Executing OPT_CONST pass (perform const folding).
 
-3.19.2. Executing OPT_MERGE pass (detect identical cells).
+3.18.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.19.3. Executing OPT_RMDFF pass (remove dff with constant values).
+3.18.3. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
-3.19.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.18.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.19.5. Finished fast OPT passes.
+3.18.5. Finished fast OPT passes.
 
-3.20. Executing ABC pass (technology mapping using ABC).
+3.19. Executing ABC pass (technology mapping using ABC).
 
-3.20.1. Extracting gate netlist of module `\mux' to `<abc-temp-dir>/input.blif'..
+3.19.1. Extracting gate netlist of module `\mux' to `<abc-temp-dir>/input.blif'..
 Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 1 outputs.
 
-3.20.1.1. Executing ABC.
-Running ABC command: berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
+3.19.1.1. Executing ABC.
+Running ABC command: <yosys-exe-dir>/berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
 ABC: ABC command line: "source <abc-temp-dir>/abc.script".
 ABC: 
 ABC: + read_blif <abc-temp-dir>/input.blif 
 ABC: + read_library <abc-temp-dir>/stdcells.genlib 
 ABC: Entered genlib library with 15 gates from file "<abc-temp-dir>/stdcells.genlib".
-ABC: + retime -o 
+ABC: + retime 
 ABC: + map 
 ABC: Warning: The network was strashed and balanced before mapping.
 ABC: + write_blif <abc-temp-dir>/output.blif 
 
-3.20.1.2. Re-integrating ABC results.
+3.19.1.2. Re-integrating ABC results.
 ABC RESULTS:               MUX cells:        3
 ABC RESULTS:        internal signals:        2
 ABC RESULTS:           input signals:        6
 ABC RESULTS:          output signals:        1
 Removing temp directory.
 
-3.21. Executing OPT pass (performing simple optimizations).
+3.20. Executing OPT pass (performing simple optimizations).
 
-3.21.1. Executing OPT_EXPR pass (perform const folding).
+3.20.1. Executing OPT_CONST pass (perform const folding).
 
-3.21.2. Executing OPT_MERGE pass (detect identical cells).
+3.20.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
-3.21.3. Executing OPT_RMDFF pass (remove dff with constant values).
+3.20.3. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
-3.21.4. Executing OPT_CLEAN pass (remove unused cells and wires).
+3.20.4. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-3.21.5. Finished fast OPT passes.
+3.20.5. Finished fast OPT passes.
 
-3.22. Executing HIERARCHY pass (managing design hierarchy).
+3.21. Executing HIERARCHY pass (managing design hierarchy).
 
-3.22.1. Analyzing design hierarchy..
+3.21.1. Analyzing design hierarchy..
 Top module:  \mux
 
-3.22.2. Analyzing design hierarchy..
+3.21.2. Analyzing design hierarchy..
 Top module:  \mux
 Removed 0 unused modules.
 
-3.23. Printing statistics.
+3.22. Printing statistics.
 
 === mux ===
 
@@ -363,14 +368,29 @@ Removed 0 unused modules.
      $_DFF_P_                        1
      $_MUX_                          3
 
-3.24. Executing CHECK pass (checking for obvious problems).
+=== design hierarchy ===
+
+   mux                               1
+
+   Number of wires:                 11
+   Number of wire bits:             13
+   Number of public wires:           8
+   Number of public wire bits:      10
+   Number of memories:               0
+   Number of memory bits:            0
+   Number of processes:              0
+   Number of cells:                  4
+     $_DFF_P_                        1
+     $_MUX_                          3
+
+3.23. Executing CHECK pass (checking for obvious problems).
 checking module mux..
 found and reported 0 problems.
 
 4. Executing DFFLIBMAP pass (mapping DFF cells to sequential cells from liberty file).
-  cell DFFNEGX1 (noninv, pins=3, area=384.00) is a direct match for cell type $_DFF_N_.
-  cell DFFPOSX1 (noninv, pins=3, area=384.00) is a direct match for cell type $_DFF_P_.
-  cell DFFSR (noninv, pins=5, area=704.00) is a direct match for cell type $_DFFSR_PNN_.
+  cell DFFNEGX1 (pins=3, area=384.00) is a direct match for cell type $_DFF_N_.
+  cell DFFPOSX1 (pins=3, area=384.00) is a direct match for cell type $_DFF_P_.
+  cell DFFSR (pins=5, area=704.00) is a direct match for cell type $_DFFSR_PNN_.
   create mapping for $_DFFSR_PPN_ from mapping for $_DFFSR_PNN_.
   create mapping for $_DFFSR_PNP_ from mapping for $_DFFSR_PNN_.
   create mapping for $_DFFSR_PPP_ from mapping for $_DFFSR_PNP_.
@@ -410,14 +430,14 @@ Mapping DFF cells in module `\mux':
 
 5. Executing OPT pass (performing simple optimizations).
 
-5.1. Executing OPT_EXPR pass (perform const folding).
+5.1. Executing OPT_CONST pass (perform const folding).
 
-5.2. Executing OPT_MERGE pass (detect identical cells).
+5.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
 5.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \mux..
+Running muxtree optimizier on module \mux..
   Creating internal representation of mux trees.
   No muxes found in this module.
 Removed 0 multiplexer ports.
@@ -426,16 +446,17 @@ Removed 0 multiplexer ports.
   Optimizing cells in module \mux.
 Performed a total of 0 changes.
 
-5.5. Executing OPT_MERGE pass (detect identical cells).
+5.5. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
 5.6. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
 5.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-5.8. Executing OPT_EXPR pass (perform const folding).
+5.8. Executing OPT_CONST pass (perform const folding).
 
 5.9. Finished OPT passes. (There is nothing left to do.)
 
@@ -445,12 +466,12 @@ Finding unused cells or wires in module \mux..
 Extracted 3 gates and 9 wires to a netlist network with 6 inputs and 1 outputs.
 
 6.1.1. Executing ABC.
-Running ABC command: /usr/local/share/qflow/bin/yosys-abc -s -f <abc-temp-dir>/abc.script 2>&1
+Running ABC command: <yosys-exe-dir>/berkeley-abc -s -f <abc-temp-dir>/abc.script 2>&1
 ABC: ABC command line: "source <abc-temp-dir>/abc.script".
 ABC: 
 ABC: + read_blif <abc-temp-dir>/input.blif 
-ABC: + read_lib -w /usr/local/share/qflow/tech/osu035/osu035_stdcells.lib 
-ABC: Parsing finished successfully.  Parsing time =     0.00 sec
+ABC: + read_lib -w /usr/share/qflow/tech/osu035/osu035_stdcells.lib 
+ABC: Parsing finished successfully.  Parsing time =     0.01 sec
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFNEGX1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFPOSX1".
 ABC: Scl_LibertyReadGenlib() skipped sequential cell "DFFSR".
@@ -462,12 +483,12 @@ ABC: Scl_LibertyReadGenlib() skipped cell "PADFC" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped cell "PADNC" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped cell "PADVDD" without logic function.
 ABC: Scl_LibertyReadGenlib() skipped cell "PADGND" without logic function.
-ABC: Library "osu035_stdcells" from "/usr/local/share/qflow/tech/osu035/osu035_stdcells.lib" has 28 cells (11 skipped: 4 seq; 3 tri-state; 4 no func).  Time =     0.01 sec
+ABC: Library "osu035_stdcells" from "/usr/share/qflow/tech/osu035/osu035_stdcells.lib" has 28 cells (11 skipped: 4 seq; 3 tri-state; 4 no func).  Time =     0.01 sec
 ABC: Memory =    0.38 MB. Time =     0.01 sec
 ABC: Warning: Detected 2 multi-output gates (for example, "FAX1").
 ABC: + strash 
 ABC: + scorr 
-ABC: Warning: The network is combinational (run "fraig" or "fraig_sweep").
+ABC: Error: The network is combinational (run "fraig" or "fraig_sweep").
 ABC: + ifraig 
 ABC: + retime 
 ABC: + strash 
@@ -502,14 +523,14 @@ Don't map input port mux.sel: Missing option -inpad.
 
 9. Executing OPT pass (performing simple optimizations).
 
-9.1. Executing OPT_EXPR pass (perform const folding).
+9.1. Executing OPT_CONST pass (perform const folding).
 
-9.2. Executing OPT_MERGE pass (detect identical cells).
+9.2. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
 9.3. Executing OPT_MUXTREE pass (detect dead branches in mux trees).
-Running muxtree optimizer on module \mux..
+Running muxtree optimizier on module \mux..
   Creating internal representation of mux trees.
   No muxes found in this module.
 Removed 0 multiplexer ports.
@@ -518,25 +539,26 @@ Removed 0 multiplexer ports.
   Optimizing cells in module \mux.
 Performed a total of 0 changes.
 
-9.5. Executing OPT_MERGE pass (detect identical cells).
+9.5. Executing OPT_SHARE pass (detect identical cells).
 Finding identical cells in module `\mux'.
 Removed a total of 0 cells.
 
 9.6. Executing OPT_RMDFF pass (remove dff with constant values).
+Replaced 0 DFF cells.
 
 9.7. Executing OPT_CLEAN pass (remove unused cells and wires).
 Finding unused cells or wires in module \mux..
 
-9.8. Executing OPT_EXPR pass (perform const folding).
+9.8. Executing OPT_CONST pass (perform const folding).
 
 9.9. Finished OPT passes. (There is nothing left to do.)
 
 10. Executing BLIF backend.
 
-End of script. Logfile hash: fb2743abd0
-CPU: user 0.13s system 0.00s, MEM: 35.53 MB total, 8.98 MB resident
-Yosys 0.7 (git sha1 61f6811, gcc 6.2.0-11ubuntu1 -O2 -fdebug-prefix-map=/build/yosys-OIL3SR/yosys-0.7=. -fstack-protector-strong -fPIC -Os)
-Time spent: 31% 1x share (0 sec), 9% 14x opt_merge (0 sec), ...
+End of script. Logfile hash: 10fac9d2fa
+CPU: user 0.13s system 0.00s, MEM: 34.82 MB total, 8.46 MB resident
+Yosys 0.5+ (git sha1 f13e387, gcc 5.3.1-8ubuntu2 -O2 -fstack-protector-strong -fPIC -Os)
+Time spent: 32% 1x share (0 sec), 8% 14x opt_const (0 sec), ...
 Cleaning up output syntax
 Cleaning Up blif file syntax
 Running blifFanout (iterative)
@@ -544,9 +566,9 @@ Running blifFanout (iterative)
 Parsing library "osu035_stdcells"
 End of library at line 6636
 Lib Read:  Processed 6637 lines.
-Top internal fanout is 1 (load 241.719) from node _0_,
-driven by OAI22X1 with strength 107.995 (fF driven at latency 200)
-Top fanout load-to-strength ratio is 0.872201 (latency = 174.44 ps)
+Top internal fanout is 1 (load 241.719) from node $abc$58$n11,
+driven by OAI21X1 with strength 101.851
+Top fanout load-to-strength ratio is 0.872201
 Top input node fanout is 3 (load 69.5198) from node sel<1>.
 0 gates exceed specified minimum load.
 0 buffers were added.
@@ -560,176 +582,61 @@ Gate counts by drive strength:
 gates resized: 0
 
 Generating RTL verilog and SPICE netlist file in directory
-	 /home/jcscheunemann/Work/VLSI/Qflow/synthesis
+	 /home/lsd/Work/Qflow-scripts/synthesis
 Files:
-   Verilog: /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.rtl.v
-   Verilog: /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.rtlnopwr.v
-   Spice:   /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.spc
+   Verilog: /home/lsd/Work/Qflow-scripts/synthesis/mux.rtl.v
+   Verilog: /home/lsd/Work/Qflow-scripts/synthesis/mux.rtlnopwr.v
+   Spice:   /home/lsd/Work/Qflow-scripts/synthesis/mux.spc
 
 Running blif2Verilog.
 Running blif2BSpice.
-Running spi2xspice.py
-Synthesis script ended on seg jul 3 06:37:00 -03 2017
+Synthesis script ended on Seg Jul 3 14:13:25 BRT 2017
 Running blif2cel.tcl
-Loaded LEF file (/usr/local/share/qflow/tech/osu035/osu035_stdcells.lef) for reading...
-Loaded BLIF file (/home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.blif) for reading ...
-Loaded CEL file (/home/jcscheunemann/Work/VLSI/Qflow/layout/mux.cel) for writing...
-1st pass of blif file /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.blif. . .
+1st pass of blif file /home/lsd/Work/Qflow-scripts/synthesis/mux.blif. . .
 Reading macros from LEF file. . .
 Parsing macro BUFX2:  Ports are:
-parse_pin
-macroname: BUFX2, pinname: A
-Port type: INPUT 
 A -160 -140 1
-parse_pin
-macroname: BUFX2, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: BUFX2, pinname: Y
-Port type: OUTPUT 
 Y 170 0 1
-parse_pin
-macroname: BUFX2, pinname: vdd
-Port type: INOUT 
 vdd 0 999 1
 Parsing macro DFFPOSX1:  Ports are:
-parse_pin
-macroname: DFFPOSX1, pinname: Q
-Port type: OUTPUT 
 Q 580 -420 1
-parse_pin
-macroname: DFFPOSX1, pinname: CLK
-Port type: INPUT 
 CLK -500 -280 1
-parse_pin
-macroname: DFFPOSX1, pinname: D
-Port type: INPUT 
 D -450 -111 1
-parse_pin
-macroname: DFFPOSX1, pinname: gnd
-Port type: INOUT 
 gnd -170 -870 1
-parse_pin
-macroname: DFFPOSX1, pinname: vdd
-Port type: INOUT 
 vdd -160 770 1
 Parsing macro INVX1:  Ports are:
-parse_pin
-macroname: INVX1, pinname: A
-Port type: INPUT 
 A -80 -540 1
-parse_pin
-macroname: INVX1, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: INVX1, pinname: Y
-Port type: OUTPUT 
 Y 80 0 1
-parse_pin
-macroname: INVX1, pinname: vdd
-Port type: INOUT 
 vdd 0 999 1
 Parsing macro NOR2X1:  Ports are:
-parse_pin
-macroname: NOR2X1, pinname: A
-Port type: INPUT 
 A -160 -540 1
-parse_pin
-macroname: NOR2X1, pinname: B
-Port type: INPUT 
 B 160 -61 1
-parse_pin
-macroname: NOR2X1, pinname: gnd
-Port type: INOUT 
 gnd 160 -870 1
-parse_pin
-macroname: NOR2X1, pinname: Y
-Port type: OUTPUT 
 Y 0 -300 1
-parse_pin
-macroname: NOR2X1, pinname: vdd
-Port type: INOUT 
 vdd 0 999 1
 Parsing macro OAI21X1:  Ports are:
-parse_pin
-macroname: OAI21X1, pinname: A
-Port type: INPUT 
 A -160 -330 1
-parse_pin
-macroname: OAI21X1, pinname: B
-Port type: INPUT 
 B -80 -140 1
-parse_pin
-macroname: OAI21X1, pinname: C
-Port type: INPUT 
 C 160 300 1
-parse_pin
-macroname: OAI21X1, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: OAI21X1, pinname: Y
-Port type: OUTPUT 
 Y 50 -100 1
-parse_pin
-macroname: OAI21X1, pinname: vdd
-Port type: INOUT 
 vdd 179 770 1
 Parsing macro OAI22X1:  Ports are:
-parse_pin
-macroname: OAI22X1, pinname: A
-Port type: INPUT 
 A -240 -330 1
-parse_pin
-macroname: OAI22X1, pinname: B
-Port type: INPUT 
 B -160 -140 1
-parse_pin
-macroname: OAI22X1, pinname: C
-Port type: INPUT 
 C 320 -261 1
-parse_pin
-macroname: OAI22X1, pinname: D
-Port type: INPUT 
 D 160 -140 1
-parse_pin
-macroname: OAI22X1, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: OAI22X1, pinname: Y
-Port type: OUTPUT 
 Y 0 -300 1
-parse_pin
-macroname: OAI22X1, pinname: vdd
-Port type: INOUT 
 vdd 320 570 1
 Parsing macro MUX2X1:  Ports are:
-parse_pin
-macroname: MUX2X1, pinname: A
-Port type: INPUT 
 A 240 -61 1
-parse_pin
-macroname: MUX2X1, pinname: B
-Port type: INPUT 
 B -240 -140 1
-parse_pin
-macroname: MUX2X1, pinname: S
-Port type: INPUT 
 S -400 -140 1
-parse_pin
-macroname: MUX2X1, pinname: gnd
-Port type: INOUT 
 gnd 280 -730 1
-parse_pin
-macroname: MUX2X1, pinname: Y
-Port type: OUTPUT 
 Y 19 500 1
-parse_pin
-macroname: MUX2X1, pinname: vdd
-Port type: INOUT 
 vdd 280 570 1
 2nd pass of blif file. . .
 3rd pass of blif file. . .
@@ -815,7 +722,7 @@ Authors: Carl Sechen, Kai-Win Lee, and Bill Swartz,
 106 107 108 109 110 111 112 113 114 115 116 117 118 119 120 
 121 122 123 124 125 126 127 128 129 130 131 132 133 134 135 
 136 137 138 139 140 141 142 143 144 145 146 147 148 149 150 
-151 152 153 154 155 156 157 158 
+151 152 153 154 155 156 157 
  block left edge is at -399
  the longest block length is 5600
  building the steiner trees
@@ -828,87 +735,7 @@ Authors: Carl Sechen, Kai-Win Lee, and Bill Swartz,
  doing feed-through pins assignment
  building the net-tree now !
  set up the global routing grids
- the starting value of tracks =    6
- removing redundant feed-through pins
- the connectivity of all the nets is verified
-
- block left edge is at -399
- the longest block length is 5600
- building the steiner trees
- rebuilding the steiner tree
-
-----start doing coarse global routing ------ 
- ITERATION  1
-
-  longest Row is:1   Its length is:5600
- doing feed-through pins assignment
- building the net-tree now !
- set up the global routing grids
- the starting value of tracks =    6
- removing redundant feed-through pins
- the connectivity of all the nets is verified
-
- block left edge is at -399
- the longest block length is 5600
- building the steiner trees
- rebuilding the steiner tree
-
-----start doing coarse global routing ------ 
- ITERATION  1
-
-  longest Row is:1   Its length is:5600
- doing feed-through pins assignment
- building the net-tree now !
- set up the global routing grids
- the starting value of tracks =    6
- removing redundant feed-through pins
- the connectivity of all the nets is verified
-
- block left edge is at -399
- the longest block length is 5600
- building the steiner trees
- rebuilding the steiner tree
-
-----start doing coarse global routing ------ 
- ITERATION  1
-
-  longest Row is:1   Its length is:5600
- doing feed-through pins assignment
- building the net-tree now !
- set up the global routing grids
- the starting value of tracks =    6
- removing redundant feed-through pins
- the connectivity of all the nets is verified
-
- block left edge is at -399
- the longest block length is 5600
- building the steiner trees
- rebuilding the steiner tree
-
-----start doing coarse global routing ------ 
- ITERATION  1
-
-  longest Row is:1   Its length is:5600
- doing feed-through pins assignment
- building the net-tree now !
- set up the global routing grids
- the starting value of tracks =    6
- removing redundant feed-through pins
- the connectivity of all the nets is verified
-
- block left edge is at -399
- the longest block length is 5600
- building the steiner trees
- rebuilding the steiner tree
-
-----start doing coarse global routing ------ 
- ITERATION  1
-
-  longest Row is:1   Its length is:5600
- doing feed-through pins assignment
- building the net-tree now !
- set up the global routing grids
- the starting value of tracks =    6
+ the starting value of tracks =    5
  removing redundant feed-through pins
  the connectivity of all the nets is verified
 
@@ -940,7 +767,87 @@ Authors: Carl Sechen, Kai-Win Lee, and Bill Swartz,
  doing feed-through pins assignment
  building the net-tree now !
  set up the global routing grids
- the starting value of tracks =    6
+ the starting value of tracks =    5
+ removing redundant feed-through pins
+ the connectivity of all the nets is verified
+
+ block left edge is at -399
+ the longest block length is 5600
+ building the steiner trees
+ rebuilding the steiner tree
+
+----start doing coarse global routing ------ 
+ ITERATION  1
+
+  longest Row is:1   Its length is:5600
+ doing feed-through pins assignment
+ building the net-tree now !
+ set up the global routing grids
+ the starting value of tracks =    5
+ removing redundant feed-through pins
+ the connectivity of all the nets is verified
+
+ block left edge is at -399
+ the longest block length is 5600
+ building the steiner trees
+ rebuilding the steiner tree
+
+----start doing coarse global routing ------ 
+ ITERATION  1
+
+  longest Row is:1   Its length is:5600
+ doing feed-through pins assignment
+ building the net-tree now !
+ set up the global routing grids
+ the starting value of tracks =    5
+ removing redundant feed-through pins
+ the connectivity of all the nets is verified
+
+ block left edge is at -399
+ the longest block length is 5600
+ building the steiner trees
+ rebuilding the steiner tree
+
+----start doing coarse global routing ------ 
+ ITERATION  1
+
+  longest Row is:1   Its length is:5600
+ doing feed-through pins assignment
+ building the net-tree now !
+ set up the global routing grids
+ the starting value of tracks =    5
+ removing redundant feed-through pins
+ the connectivity of all the nets is verified
+
+ block left edge is at -399
+ the longest block length is 5600
+ building the steiner trees
+ rebuilding the steiner tree
+
+----start doing coarse global routing ------ 
+ ITERATION  1
+
+  longest Row is:1   Its length is:5600
+ doing feed-through pins assignment
+ building the net-tree now !
+ set up the global routing grids
+ the starting value of tracks =    5
+ removing redundant feed-through pins
+ the connectivity of all the nets is verified
+
+ block left edge is at -399
+ the longest block length is 5600
+ building the steiner trees
+ rebuilding the steiner tree
+
+----start doing coarse global routing ------ 
+ ITERATION  1
+
+  longest Row is:1   Its length is:5600
+ doing feed-through pins assignment
+ building the net-tree now !
+ set up the global routing grids
+ the starting value of tracks =    5
  removing redundant feed-through pins
  the connectivity of all the nets is verified
 
@@ -965,44 +872,33 @@ Offsets: 80.0 100
 14 horizontal tracks from -400.0 to 2400.0 step 200 (M1, M3, ...)
 41 vertical tracks from -480.0 to 6080.0 step 160.0 (M2, M4, ...)
 Done with place2def.tcl
-Running addspacers.tcl -stripe 5 100 PG -nostretch mux /usr/local/share/qflow/tech/osu035/osu035_stdcells.lef FILL
-Running addspacers.tcl
-Reading FILL macros from LEF file.
-Reading DEF file mux.def. . .
-Number of rows is 1
-Longest row has width 56.8 um
-Analysis of DEF file:
-Number of components = 7
-New number of components = 7
-Number of rows = 1
-can't read "stripefills": no such variable
-    while executing
-"lindex $stripefills 0"
-    invoked from within
-"if [regexp {[ \t]*DIEAREA[ \t]*\([ \t]*([^ \t]+)[ \t]+([^ \t]+)[ \t]*\)[ \t]*\([ \t]*([^ \t]+)[ \t]+([^ \t]+)[ \t]*\)[ \t]*;} $line lmatch  diexlow di..."
-    ("while" body line 2)
-    invoked from within
-"while {[gets $fdef line] >= 0} {
-    if [regexp {[ \t]*DIEAREA[ \t]*\([ \t]*([^ \t]+)[ \t]+([^ \t]+)[ \t]*\)[ \t]*\([ \t]*([^ \t]+)[ \t]+([^ \t]+)[ \t..."
-    (file "/usr/local/share/qflow/scripts/addspacers.tcl" line 1026)
 Running blifanno.tcl
 Reading DEF file mux.def. . .
 Done with blifanno.tcl
 
 Generating RTL verilog and SPICE netlist file in directory
-   /home/jcscheunemann/Work/VLSI/Qflow/synthesis
+   /home/lsd/Work/Qflow-scripts/synthesis
 Files:
-   Verilog: /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.rtl.v
-   Verilog: /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.rtlnopwr.v
-   Spice:   /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.spc
+   Verilog: /home/lsd/Work/Qflow-scripts/synthesis/mux.rtl.v
+   Verilog: /home/lsd/Work/Qflow-scripts/synthesis/mux.rtlnopwr.v
+   Spice:   /home/lsd/Work/Qflow-scripts/synthesis/mux.spc
 
 Running blif2Verilog.
 Running blif2BSpice.
-Placement script ended on seg jul 3 06:37:05 -03 2017
-----------------------------------------------
+Running addspacers.tcl
+Reading FILL macros from LEF file.
+Reading DEF file mux.def. . .
+Longest row is width 5680.0
+Analysis of DEF file:
+Number of components = 7
+New number of components = 7
+Number of rows = 1
+Done with addspacers.tcl
+Placement script ended on Seg Jul 3 14:13:31 BRT 2017
+-----------------------------------------
 Vesta static timing analysis tool
-(c) 2013-2017 Tim Edwards, Open Circuit Design
-----------------------------------------------
+(c) 2013 Tim Edwards, Open Circuit Design
+-----------------------------------------
 
 Parsing library "osu035_stdcells"
 End of library at line 6636
@@ -1012,8 +908,8 @@ Verilog netlist read:  Processed 23 lines.
 Number of paths analyzed:  1
 
 Top 1 maximum delay paths:
-Path DFFPOSX1_1/CLK to output pin out delay 367.07 ps   Slack = -67.07 ps
-ERROR:  Design fails timing requirements.
+Path DFFPOSX1_1/CLK to output pin out delay 252.484 ps   Slack = 47.516 ps
+Design meets timing requirements.
 -----------------------------------------
 
 Number of paths analyzed:  1
@@ -1047,9 +943,15 @@ Path input pin i3 to DFFPOSX1_1/D delay 210.29 ps
 Path input pin sel[1] to DFFPOSX1_1/D delay 212.751 ps
 -----------------------------------------
 
-Qrouter detail maze router version 1.3.57.T
+Qrouter detail maze router version 1.3.33
 No .cfg file specified, continuing without.
-Reading LEF data from file /usr/local/share/qflow/tech/osu035/osu035_stdcells.lef.
+Reading LEF data from file /usr/share/qflow/tech/osu035/osu035_stdcells.lef.
+LEF Read, Line 10: Unknown keyword "BUSBITCHARS" in LEF file; ignoring.
+LEF Read, Line 11: Unknown keyword "DIVIDERCHAR" in LEF file; ignoring.
+LEF Read, Line 16: Unknown keyword "USEMINSPACING" in LEF file; ignoring.
+LEF Read, Line 17: Unknown keyword "USEMINSPACING" in LEF file; ignoring.
+LEF Read, Line 18: Unknown keyword "CLEARANCEMEASURE" in LEF file; ignoring.
+LEF Read, Line 21: Unknown keyword "MANUFACTURINGGRID" in LEF file; ignoring.
 LEF Read, Line 51: Unknown keyword "RESISTANCE" in LEF file; ignoring.
 LEF Read, Line 52: Unknown keyword "CAPACITANCE" in LEF file; ignoring.
 LEF Read, Line 67: Unknown keyword "RESISTANCE" in LEF file; ignoring.
@@ -1147,195 +1049,100 @@ LEF Read, Line 1859: Unknown keyword "SHAPE" in LEF file; ignoring.
 LEF Read, Line 1902: Unknown keyword "SHAPE" in LEF file; ignoring.
 LEF Read, Line 1923: Unknown keyword "SHAPE" in LEF file; ignoring.
 LEF Read, Line 1968: Unknown keyword "SHAPE" in LEF file; ignoring.
-LEF Read, Line 1989: Unknown keyword "SHAPE" in LEF file; ignoring.
-LEF Read, Line 2044: Unknown keyword "SHAPE" in LEF file; ignoring.
-LEF Read, Line 2067: Unknown keyword "SHAPE" in LEF file; ignoring.
-LEF Read, Line 2109: Don't know how to parse layer "via1"
-LEF Read, Line 2151: Unknown keyword "SHAPE" in LEF file; ignoring.
-LEF Read, Line 2174: Unknown keyword "SHAPE" in LEF file; ignoring.
 LEF Read:  Further errors will not be reported.
 LEF read: Processed 3179 lines.
-LEF Read: encountered 118 errors total.
-Multiple vertical route layers at different pitches.  Using smaller pitch 1.6, will route on 1-of-N tracks if necessary.
+LEF Read: encountered 124 errors total.
 Reading DEF data from file mux.def.
 Diagnostic: Design name: "mux"
 Multiple vertical route layers at different pitches.  Using pitch 1.6 and routing on 1-of-N tracks for larger pitches.
-Multiple vertical route layers at different pitches.  Using pitch 1.6 and routing on 1-of-N tracks for larger pitches.
   Processed 7 subcell instances total.
-LEF Read, Line 25: Warning:  Number of pins read (0) does not match the number declared (12).
-DEF read: Processed 25 lines.
-LEF Read: encountered 1 error total.
-Output scale = microns / 100, precision 1
-There are 0 nets in this design.
+  Processed 10 pins total.
+  Processed 16 nets total.
+DEF read: Processed 110 lines.
+There are 16 nets in this design.
+Finished routing net sel<1>
+Nets remaining: 15
+Finished routing net sel<0>
+Nets remaining: 14
+Finished routing net $abc$58$n8_1
+Nets remaining: 13
+Finished routing net i1
+Nets remaining: 12
+Finished routing net $abc$58$n9
+Nets remaining: 11
+Finished routing net i3
+Nets remaining: 10
+Finished routing net i4
+Nets remaining: 9
+Finished routing net $abc$58$n10
+Nets remaining: 8
+Finished routing net i2
+Nets remaining: 7
+Finished routing net $abc$58$n11
+Nets remaining: 6
+Finished routing net out_FF_INPUT
+Nets remaining: 5
+Finished routing net $auto$iopadmap.cc:164:execute$64
+Nets remaining: 4
+Finished routing net out
+Nets remaining: 3
+Finished routing net clk
+Nets remaining: 2
 
 ----------------------------------------------
-Progress: Stage 1 total routes completed: 0
+Progress: Stage 1 total routes completed: 17
 No failed routes!
 ----------------------------------------------
 ----------------------------------------------
 Final: No failed routes!
 ----------------------------------------------
-Router script ended on seg jul 3 06:37:06 -03 2017
+Router script ended on Seg Jul 3 14:13:32 BRT 2017
 Running blif2cel.tcl
-Loaded LEF file (/usr/local/share/qflow/tech/osu035/osu035_stdcells.lef) for reading...
-Loaded BLIF file (/home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.blif) for reading ...
-Loaded CEL file (/home/jcscheunemann/Work/VLSI/Qflow/layout/mux.cel) for writing...
-1st pass of blif file /home/jcscheunemann/Work/VLSI/Qflow/synthesis/mux.blif. . .
+1st pass of blif file /home/lsd/Work/Qflow-scripts/synthesis/mux.blif. . .
 Reading macros from LEF file. . .
 Parsing macro BUFX2:  Ports are:
-parse_pin
-macroname: BUFX2, pinname: A
-Port type: INPUT 
 A -160 -140 1
-parse_pin
-macroname: BUFX2, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: BUFX2, pinname: Y
-Port type: OUTPUT 
 Y 170 0 1
-parse_pin
-macroname: BUFX2, pinname: vdd
-Port type: INOUT 
 vdd 0 999 1
 Parsing macro DFFPOSX1:  Ports are:
-parse_pin
-macroname: DFFPOSX1, pinname: Q
-Port type: OUTPUT 
 Q 580 -420 1
-parse_pin
-macroname: DFFPOSX1, pinname: CLK
-Port type: INPUT 
 CLK -500 -280 1
-parse_pin
-macroname: DFFPOSX1, pinname: D
-Port type: INPUT 
 D -450 -111 1
-parse_pin
-macroname: DFFPOSX1, pinname: gnd
-Port type: INOUT 
 gnd -170 -870 1
-parse_pin
-macroname: DFFPOSX1, pinname: vdd
-Port type: INOUT 
 vdd -160 770 1
 Parsing macro INVX1:  Ports are:
-parse_pin
-macroname: INVX1, pinname: A
-Port type: INPUT 
 A -80 -540 1
-parse_pin
-macroname: INVX1, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: INVX1, pinname: Y
-Port type: OUTPUT 
 Y 80 0 1
-parse_pin
-macroname: INVX1, pinname: vdd
-Port type: INOUT 
 vdd 0 999 1
 Parsing macro NOR2X1:  Ports are:
-parse_pin
-macroname: NOR2X1, pinname: A
-Port type: INPUT 
 A -160 -540 1
-parse_pin
-macroname: NOR2X1, pinname: B
-Port type: INPUT 
 B 160 -61 1
-parse_pin
-macroname: NOR2X1, pinname: gnd
-Port type: INOUT 
 gnd 160 -870 1
-parse_pin
-macroname: NOR2X1, pinname: Y
-Port type: OUTPUT 
 Y 0 -300 1
-parse_pin
-macroname: NOR2X1, pinname: vdd
-Port type: INOUT 
 vdd 0 999 1
 Parsing macro OAI21X1:  Ports are:
-parse_pin
-macroname: OAI21X1, pinname: A
-Port type: INPUT 
 A -160 -330 1
-parse_pin
-macroname: OAI21X1, pinname: B
-Port type: INPUT 
 B -80 -140 1
-parse_pin
-macroname: OAI21X1, pinname: C
-Port type: INPUT 
 C 160 300 1
-parse_pin
-macroname: OAI21X1, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: OAI21X1, pinname: Y
-Port type: OUTPUT 
 Y 50 -100 1
-parse_pin
-macroname: OAI21X1, pinname: vdd
-Port type: INOUT 
 vdd 179 770 1
 Parsing macro OAI22X1:  Ports are:
-parse_pin
-macroname: OAI22X1, pinname: A
-Port type: INPUT 
 A -240 -330 1
-parse_pin
-macroname: OAI22X1, pinname: B
-Port type: INPUT 
 B -160 -140 1
-parse_pin
-macroname: OAI22X1, pinname: C
-Port type: INPUT 
 C 320 -261 1
-parse_pin
-macroname: OAI22X1, pinname: D
-Port type: INPUT 
 D 160 -140 1
-parse_pin
-macroname: OAI22X1, pinname: gnd
-Port type: INOUT 
 gnd 0 -1000 1
-parse_pin
-macroname: OAI22X1, pinname: Y
-Port type: OUTPUT 
 Y 0 -300 1
-parse_pin
-macroname: OAI22X1, pinname: vdd
-Port type: INOUT 
 vdd 320 570 1
 Parsing macro MUX2X1:  Ports are:
-parse_pin
-macroname: MUX2X1, pinname: A
-Port type: INPUT 
 A 240 -61 1
-parse_pin
-macroname: MUX2X1, pinname: B
-Port type: INPUT 
 B -240 -140 1
-parse_pin
-macroname: MUX2X1, pinname: S
-Port type: INPUT 
 S -400 -140 1
-parse_pin
-macroname: MUX2X1, pinname: gnd
-Port type: INOUT 
 gnd 280 -730 1
-parse_pin
-macroname: MUX2X1, pinname: Y
-Port type: OUTPUT 
 Y 19 500 1
-parse_pin
-macroname: MUX2X1, pinname: vdd
-Port type: INOUT 
 vdd 280 570 1
 2nd pass of blif file. . .
 3rd pass of blif file. . .

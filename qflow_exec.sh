@@ -1,13 +1,13 @@
-#!/bin/tcsh -f
+#!/usr/bin/tcsh
 #-------------------------------------------
-# qflow exec script for project /home/jcscheunemann/Work/VLSI/Qflow
+# qflow exec script for project /home/lsd/Work/Qflow-scripts
 #-------------------------------------------
 
-/usr/local/share/qflow/scripts/synthesize.sh /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
-/usr/local/share/qflow/scripts/placement.sh -d /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
-/usr/local/share/qflow/scripts/vesta.sh /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
-/usr/local/share/qflow/scripts/router.sh /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
-/usr/local/share/qflow/scripts/placement.sh -f -d /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
-/usr/local/share/qflow/scripts/router.sh /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1 $status
-/usr/local/share/qflow/scripts/cleanup.sh /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
-/usr/local/share/qflow/scripts/display.sh /home/jcscheunemann/Work/VLSI/Qflow mux || exit 1
+/usr/lib/qflow/scripts/synthesize.sh /home/lsd/Work/Qflow-scripts mux
+/usr/lib/qflow/scripts/placement.sh -d /home/lsd/Work/Qflow-scripts mux
+/usr/lib/qflow/scripts/vesta.sh /home/lsd/Work/Qflow-scripts mux
+/usr/lib/qflow/scripts/router.sh /home/lsd/Work/Qflow-scripts mux
+/usr/lib/qflow/scripts/placement.sh -f -d /home/lsd/Work/Qflow-scripts mux
+/usr/lib/qflow/scripts/router.sh /home/lsd/Work/Qflow-scripts mux $status
+/usr/lib/qflow/scripts/cleanup.sh /home/lsd/Work/Qflow-scripts mux
+/usr/lib/qflow/scripts/display.sh /home/lsd/Work/Qflow-scripts mux

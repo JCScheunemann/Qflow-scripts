@@ -94,7 +94,7 @@ if(len(sys.argv)>1):
 		print "Mapeamento de entradas/saidas completo..."
 		print "lendo o arquivo spice do projeto em: "+projDir+'/'+topModule+".spc"
 		arquivo=open(projDir+'/'+topModule+".spc",'r')
-		spice=arquivo.readlines()
+		spice=arquivo.readlines( )
 		arquivo.close()
 	except:
 		print "Nao e possivel realizar a leitura dos arquivos de configuracao"

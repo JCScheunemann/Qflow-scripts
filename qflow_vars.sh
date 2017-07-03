@@ -1,16 +1,19 @@
-#!/bin/tcsh -f
+#!/usr/bin/tcsh
 #-------------------------------------------
-# qflow variables for project /home/jcscheunemann/Work/VLSI/Qflow
+# qflow variables for project /home/lsd/Work/Qflow-scripts
 #-------------------------------------------
 
-set projectpath=/home/jcscheunemann/Work/VLSI/Qflow
-set techdir=/usr/local/share/qflow/tech/osu035
-set sourcedir=/home/jcscheunemann/Work/VLSI/Qflow/source
-set synthdir=/home/jcscheunemann/Work/VLSI/Qflow/synthesis
-set layoutdir=/home/jcscheunemann/Work/VLSI/Qflow/layout
+set projectpath=/home/lsd/Work/Qflow-scripts
+set techdir=/usr/share/qflow/tech/osu035
+set sourcedir=/home/lsd/Work/Qflow-scripts/source
+set synthdir=/home/lsd/Work/Qflow-scripts/synthesis
+set layoutdir=/home/lsd/Work/Qflow-scripts/layout
 set techname=osu035
-set scriptdir=/usr/local/share/qflow/scripts
-set bindir=/usr/local/share/qflow/bin
-set synthlog=/home/jcscheunemann/Work/VLSI/Qflow/synth.log
+set scriptdir=/usr/lib/qflow/scripts
+set bindir=/usr/lib/qflow/bin
+set synthlog=/home/lsd/Work/Qflow-scripts/synth.log
+if (-f /home/lsd/Work/Qflow-scripts/project_vars.sh) then
+    source /home/lsd/Work/Qflow-scripts/project_vars.sh
+endif
 #-------------------------------------------
 
