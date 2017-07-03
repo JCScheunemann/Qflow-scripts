@@ -1,0 +1,6 @@
+#dirs 
+.source/*
+.layout/*
+.synthesis/*
+
+*.sh
