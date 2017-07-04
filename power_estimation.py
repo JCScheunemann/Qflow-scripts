@@ -4,6 +4,7 @@
 #---------------
 #Imports
 import sys
+import os
 #globals
 Dflag=True
 Lflag=True
@@ -22,6 +23,7 @@ print sys.argv
 if(len(sys.argv)>1):
 	topModule=sys.argv[1]
 	print "Procurando os arquivos de configuracao do projeto ..."
+	#=======================Leitura dos arquivos de configuracao======================
 	try:
 		#==========================read qflow vars========================
 		print "Lendo a lista de diretorios..."
@@ -123,6 +125,19 @@ if(len(sys.argv)>1):
 			Lflag=False
 		elif(sys.argv[2]=="-l"):
 			Dflag-False
+	#=======================Inicio da estimativa de potencia======================
+	try:
+		os.system("qflow sta "+topModule+">./report/time.txt") 
+		arquivo=open("./report/time.txt,'r')
+		tmp=arquivo.readlines()
+		arquivo.close()
+		for x in tmp:
+			if("to output pin out delay" in x):
+				time=x.split(" ps")[0].split(" ")[-1] #get minimum period time
+				break
+		#=======================inicio da criação do arquivo spice da simulacao======
+	except:
+		pirnt "\tErro 42, reservado para quando eu tiver saco de resolver ele."
 else:
     print "Lendo o arquivo "+str((sys.argv[0]))+" Test dev mode"
     #arquivo=open("D:\Eletronica\Projects\NRISC\Assembler\Test.asm",'r')#arquivo de teste
