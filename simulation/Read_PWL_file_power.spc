@@ -33,11 +33,11 @@ xmux_1 vdd 0 in1 in2 in3 in4 sel0 sel1 clk out mux
 .save all @vsupply[p]
 .control
 	run
-	plot v(in1),v(in2),v(in3),v(in4), v(clk)
+	*plot v(in1),v(in2),v(in3),v(in4), v(clk)
 	*meas tran iave INTEG i(vsupply) from=tp_start to=tp_stop
 	meas tran iave INTEG i(vsupply) from=1n to=12n
 	*let power = -iave * vdd_value / (tp_stop-tp_start) ; how to access psu from here?
 	let power = -iave * 3 / 11ns ; how to access psu from here?
     print power
-	*exit
+	exit
 .endc
