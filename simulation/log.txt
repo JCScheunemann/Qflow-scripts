@@ -1,0 +1,41 @@
+
+Circuit: *power estimation scripts
+
+Reducing trtol to 1 for xspice 'A' devices
+Doing analysis at TEMP = 27.000000 and TNOM = 27.000000
+
+
+Initial Transient Solution
+--------------------------
+
+Node                                   Voltage
+----                                   -------
+vdd                                          3
+out                                3.22926e-07
+clk                                          0
+in1                                          0
+in2                                          0
+in3                                          0
+in4                                          0
+sel0                                         0
+sel1                                         0
+xmux_1.n0                                    3
+xmux_1.n1                          6.50404e-07
+xmux_1.n2                                    3
+xmux_1.n3                                    3
+xmux_1.out_ff_input                1.19599e-06
+xmux_1.n4                          3.22935e-07
+vsupply#branch                     -2.3294e-08
+a8#branch_0_0                                0
+a8#branch_0_1                                0
+a8#branch_0_2                                0
+a8#branch_0_3                                0
+a8#branch_0_4                                0
+a8#branch_0_5                                0
+a8#branch_0_6                                0
+
+
+No. of Data Rows : 299128
+iave                =  -9.39994e-09 from=  1.00000e-09 to=  2.50000e-06
+power = 1.174993e-02
+ngspice-26 done

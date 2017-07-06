@@ -137,7 +137,7 @@ if(len(sys.argv)>1):
 				break
 		#=======================inicio da criação do arquivo spice da simulacao======
 	except:
-		pirnt "\tErro 42, reservado para quando eu tiver saco de resolver ele."
+		print "\tErro 42, reservado para quando eu tiver saco de resolver ele."
 else:
     print "Lendo o arquivo "+str((sys.argv[0]))+" Test dev mode"
     #arquivo=open("D:\Eletronica\Projects\NRISC\Assembler\Test.asm",'r')#arquivo de teste

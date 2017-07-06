@@ -14,30 +14,34 @@ Cload out 0 25f
 *v2 in2 0 pulse(0 vdd_value 0 100p 100p 1.9n 5n)
 *v3 in3 0 pulse(0 vdd_value 0 100p 100p 1.9n 4n)
 *v4 in4 0 pulse(0 vdd_value 0 100p 100p 1.9n 4.5n)
-a8 %vd([clk 0 in1 0 in2 0 in3 0 in4 0]) filesrc
-.model filesrc filesource (file="clk.txt" amploffset=[0 0 0 0 0] amplscale=[vdd_value vdd_value vdd_value vdd_value vdd_value]
+a8 %vd([clk 0 in1 0 in2 0 in3 0 in4 0 sel0 0 sel1 0]) filesrc
+.model filesrc filesource (file="test.txt" amploffset=[0 0 0 0 0 0 0] amplscale=[vdd_value vdd_value vdd_value vdd_value vdd_value vdd_value vdd_value]
 + timeoffset=0 timescale=1
 + timerelative=true amplstep=true)
-v6 sel0 0 pulse(0 vdd_value 0 100p 100p 1.9n 4n)
-v7 sel1 0 pulse(0 vdd_value 0 100p 100p 1.9n 3n)
+*v6 sel0 0 pulse(0 vdd_value 0 100p 100p 1.9n 4n)
+*v7 sel1 0 pulse(0 vdd_value 0 100p 100p 1.9n 3n)
 
 *Device under test
 *.subckt mux vdd 0 i1 i2 i3 i4 sel0 sel1 clk out 
 xmux_1 vdd 0 in1 in2 in3 in4 sel0 sel1 clk out mux
 
 
+* model binning
+.model nfet nmos ( version=4.7 level=54 lmin=0.1u lmax=20u wmin=0.1u wmax=10u  )
+.model pfet pmos ( version=4.7 level=54 lmin=0.1u lmax=20u wmin=0.1u wmax=10u  )
+
 *Simulation Time interval
 *.options method=trap reltol=0.1m
 *.tran t0 t1
-.tran 10p 12n
+.tran 10p 2500n
 .save all @vsupply[p]
 .control
 	run
 	*plot v(in1),v(in2),v(in3),v(in4), v(clk)
 	*meas tran iave INTEG i(vsupply) from=tp_start to=tp_stop
-	meas tran iave INTEG i(vsupply) from=1n to=12n
+	meas tran iave INTEG i(vsupply) from=1n to=2500n
 	*let power = -iave * vdd_value / (tp_stop-tp_start) ; how to access psu from here?
-	let power = -iave * 3 / 11ns ; how to access psu from here?
+	let power = -iave * 3 / 2400ns ; how to access psu from here?
     print power
 	exit
 .endc

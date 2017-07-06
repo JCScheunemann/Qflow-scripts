@@ -1390,9 +1390,6 @@ M11 a_13_43# B gnd gnd nfet w=4u l=0.4u
 + ad=0p pd=0u as=0p ps=0u 
 .ends XOR2X1
 
-* model binning
-.model nfet nmos ( version=4.7 level=54 lmin=0.1u lmax=20u wmin=0.1u wmax=10u  )
-.model pfet pmos ( version=4.7 level=54 lmin=0.1u lmax=20u wmin=0.1u wmax=10u  )
 
 .subckt mux vdd gnd i1 i2 i3 i4 sel0 sel1 clk out 
 XINVX1_1 sel1 n0 vdd gnd INVX1
