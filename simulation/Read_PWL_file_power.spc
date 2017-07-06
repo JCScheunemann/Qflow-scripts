@@ -33,15 +33,15 @@ xmux_1 vdd 0 in1 in2 in3 in4 sel0 sel1 clk out mux
 *Simulation Time interval
 *.options method=trap reltol=0.1m
 *.tran t0 t1
-.tran 10p 2500n
+.tran 10p 300n
 .save all @vsupply[p]
 .control
 	run
 	*plot v(in1),v(in2),v(in3),v(in4), v(clk)
 	*meas tran iave INTEG i(vsupply) from=tp_start to=tp_stop
-	meas tran iave INTEG i(vsupply) from=1n to=2500n
+	meas tran iave INTEG i(vsupply) from=1n to=300n
 	*let power = -iave * vdd_value / (tp_stop-tp_start) ; how to access psu from here?
-	let power = -iave * 3 / 2400ns ; how to access psu from here?
+	let power = -iave * 3 / 299ns ; how to access psu from here?
     print power
 	exit
 .endc

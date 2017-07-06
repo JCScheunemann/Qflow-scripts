@@ -35,7 +35,7 @@ a8#branch_0_5                                0
 a8#branch_0_6                                0
 
 
-No. of Data Rows : 299128
-iave                =  -9.39994e-09 from=  1.00000e-09 to=  2.50000e-06
-power = 1.174993e-02
+No. of Data Rows : 38743
+iave                =  -9.81861e-10 from=  1.00000e-09 to=  3.00000e-07
+power = 9.851451e-03
 ngspice-26 done
