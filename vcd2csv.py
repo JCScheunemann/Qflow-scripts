@@ -4,6 +4,9 @@ import sys
 import os
 #globals
 
+
+
+
 #code start
 arquivo=open("./simulation/test.vcd","r")
 vcdfile=arquivo.readlines()
